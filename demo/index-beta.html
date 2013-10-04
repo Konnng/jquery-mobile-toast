@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js"></script>
+    <link rel="stylesheet" href="animate.min.css">
+    <style>
+        .pomegranate {
+            /* OVERWRITES */
+            background-color:      #E74C3C !important;
+            -webkit-border-radius: 2px !important;
+                    border-radius: 2px !important;
+
+            /* CUSTOM */
+            box-shadow: 0 2px #C0392B;
+        }
+        .pomegranate p {
+            /* OVERWRITES */
+            /*max-width:  160px    !important;*/
+            /*margin:     0        !important;*/
+            /*padding:    6px 12px !important;*/
+            padding-left: 28px     !important;
+
+            /*font-size:  14px     !important;*/
+            /*color:      #FFFFFF  !important;*/
+            /*text-shadow:none     !important;*/
+
+            /*border:     none     !important;*/
+
+            /* CUSTOM */
+            background-image: url('heart.png');
+            background-repeat: no-repeat;
+            background-position: 6px 8px;
+            background-size: 16px;
+        }
+        </style>
+    </head>
+    <body>
+
+    <div id="demoPage" data-role="page">
+
+        <div data-role="header">
+            <h1>Demo</h1>
+        </div><!-- /header -->
+
+        <div data-role="content">
+            <a id="default" href="#" data-role="button">Default</a>
+            <a id="longer" href="#" data-role="button">Longer</a>
+            <a id="custom" href="#" data-role="button">Custom styling</a>
+            <a id="close-event" href="#" data-role="button">Close event</a>
+            <a id="animate-css" href="#" data-role="button">Animate.css (In)</a>
+            <a id="animate-css2" href="#" data-role="button">Animate.css (In/Out)</a>
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+
+    <script src="../dist/jquery.mobile.toast.min.js"></script>
+
+    <script>
+        $( document ).on( "pageinit", "#demoPage", function( event ) {
+            
+            $('#default').on('tap', function(){
+                $.mobile.toast({
+                    message: 'Live long and prosper!'
+                });
+            });
+
+            $('#longer').on('tap', function(){
+                $.mobile.toast({
+                    message: 'Live long and prosper!',
+                    duration: 3000
+                });
+            });
+
+            $('#custom').on('tap', function(){
+                $.mobile.toast({
+                    message: 'Live long and prosper!',
+                    classOnOpen: 'pomegranate'
+                });
+            });
+
+            $('#close-event').on('tap', function(){
+                $.mobile.toast({
+                    message: 'Live long and prosper!',
+                    afterclose: function( event, ui ){
+                        alert('Toast closed!');
+                    }
+                });
+            });
+
+            $('#animate-css').on('tap', function(){
+                $.mobile.toast({
+                    message: 'Live long and prosper!',
+                    classOnOpen: 'animated bounceInUp'
+                });
+            });
+
+            $('#animate-css2').on('tap', function(){
+                $.mobile.toast({
+                    message: 'Live long and prosper!',
+                    classOnOpen: 'animated slideInLeft',
+                    classOnClose: 'slideOutRight'
+                });
+            });
+
+        });
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,356 @@
+{
+    "project": {
+        "name": "jquery-mobile-toast",
+        "description": "A jQuery Mobile Android-like Toast Plugin.",
+        "version": "0.0.4",
+        "url": "https://github.com/TobiasHennig/jquery-mobile-toast"
+    },
+    "files": {
+        "src/jquery.mobile.toast.js": {
+            "name": "src/jquery.mobile.toast.js",
+            "modules": {},
+            "classes": {
+                "$.mobile.toast": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "$.mobile": 1
+            }
+        }
+    },
+    "modules": {},
+    "classes": {
+        "$.mobile.toast": {
+            "name": "$.mobile.toast",
+            "shortname": "$.mobile.toast",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "namespace": "$.mobile",
+            "file": "src/jquery.mobile.toast.js",
+            "line": 5,
+            "description": "A jQuery Mobile Android-like Toast Plugin.",
+            "is_constructor": 1,
+            "extends": "widget",
+            "chainable": 1,
+            "example": [
+                "\n    $.mobile.toast({ message: 'Live long and prosper!' });"
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 18,
+            "description": "Version of the widget",
+            "itemtype": "property",
+            "name": "version",
+            "type": "String",
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 25,
+            "description": "Options of this widget",
+            "itemtype": "property",
+            "name": "options",
+            "type": "Object",
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 31,
+            "description": "The message of the toast.",
+            "itemtype": "attribute",
+            "name": "message",
+            "type": "String",
+            "default": "\"\"",
+            "example": [
+                "\n    $.mobile.toast({ message: 'Live long and prosper' });",
+                "\n    // Change default value\n    $.mobile.toast.prototype.options.message = 'Live long and prosper';"
+            ],
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 44,
+            "description": "Duration of message show to the user.",
+            "itemtype": "attribute",
+            "name": "duration",
+            "type": "Number",
+            "default": "1500",
+            "example": [
+                "\n    $.mobile.toast({\n        message: 'Live long and prosper',\n        duration: 2000\n    });",
+                "\n    // Change default value\n    $.mobile.toast.prototype.options.duration = 2000;"
+            ],
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 60,
+            "description": "Optional class to overwrite styling of toast on open.",
+            "itemtype": "attribute",
+            "name": "classOnOpen",
+            "type": "String",
+            "default": "\"\"",
+            "example": [
+                "\n    $.mobile.toast({\n        message: 'Live long and prosper',\n        classOnOpen: 'pomegranate'\n    });",
+                "\n    // Change default value\n    $.mobile.toast.prototype.options.classOnOpen = 'pomegranate';"
+            ],
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 76,
+            "description": "Optional class to overwrite styling of toast on close.",
+            "itemtype": "attribute",
+            "name": "classOnClose",
+            "type": "String",
+            "default": "\"\"",
+            "example": [
+                "\n    $.mobile.toast({\n        message: 'Live long and prosper',\n        classOnClose: 'pomegranate'\n    });",
+                "\n    // Change default value\n    $.mobile.toast.prototype.options.classOnClose = 'pomegranate';"
+            ],
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 92,
+            "description": "Before position callback",
+            "itemtype": "event",
+            "name": "beforeposition",
+            "type": "Function",
+            "default": "null",
+            "example": [
+                "\n    $.mobile.toast({\n        message: 'Live long and prosper!',\n        beforeposition: function( event, ui ){\n            console.log('beforeposition');\n        }\n    });",
+                "\n    $.mobile.toast.on('toastbeforeposition', function( event, ui ){});"
+            ],
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 110,
+            "description": "After close callback",
+            "itemtype": "event",
+            "name": "afterclose",
+            "type": "Function",
+            "default": "null",
+            "example": [
+                "\n    $.mobile.toast({\n        message: 'Live long and prosper!',\n        afterclose: function( event, ui ){\n            console.log('afterclose');\n        }\n    });",
+                "\n    $.mobile.toast.on('toastafterclose', function( event, ui ){});"
+            ],
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 128,
+            "description": "After open callback",
+            "itemtype": "event",
+            "name": "afteropen",
+            "type": "Function",
+            "default": "null",
+            "example": [
+                "\n    $.mobile.toast({\n        message: 'Live long and prosper!',\n        afteropen: function( event, ui ){\n            console.log('afteropen');\n        }\n    });",
+                "\n    $.mobile.toast.on('toastafteropen', function( event, ui ){});"
+            ],
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 147,
+            "description": "Constructor method, called automaticly",
+            "is_constructor": 1,
+            "itemtype": "method",
+            "name": "_create",
+            "access": "private",
+            "tagname": "",
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 154,
+            "description": "Create callback",
+            "itemtype": "event",
+            "name": "create",
+            "example": [
+                "\n    $.mobile.toast({\n        message: 'Live long and prosper!',\n        create: function( event, ui ){\n            console.log('create');\n        }\n    });",
+                "\n    $.mobile.toast.on('toastcreate', function( event, ui ){});"
+            ],
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 187,
+            "description": "Render text method, render and style message in paragraph",
+            "itemtype": "method",
+            "name": "_renderText",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "jQuery fragment",
+                "type": "Object"
+            },
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 209,
+            "description": "Render toast method, render and style paragraph in container",
+            "itemtype": "method",
+            "name": "_renderToast",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "jQuery fragment",
+                "type": "Object"
+            },
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 234,
+            "description": "Add toast to page",
+            "itemtype": "method",
+            "name": "_addToPage",
+            "access": "private",
+            "tagname": "",
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 244,
+            "description": "Calculates top, left coordinates to postion toast",
+            "itemtype": "method",
+            "name": "_getToastCoordinates",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "Position object",
+                "type": "Object"
+            },
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 265,
+            "description": "Get position an size of page",
+            "itemtype": "method",
+            "name": "_getWindowCoordinates",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "Position/size object",
+                "type": "Object"
+            },
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 283,
+            "description": "Remove toast from page",
+            "itemtype": "method",
+            "name": "_destroy",
+            "access": "private",
+            "tagname": "",
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 293,
+            "description": "Called whenever the option() method is called, regardless of the form in which the option() method was called.\nOverriding this is useful if you can defer processor-intensive changes for multiple option changes.",
+            "itemtype": "method",
+            "name": "_setOptions",
+            "access": "private",
+            "tagname": "",
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 304,
+            "description": "Called from the _setOptions() method for each individual option. Widget state should be updated based on changes.",
+            "itemtype": "method",
+            "name": "_setOption",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The name of the option to set.",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "A value to set for the option.",
+                    "type": "Object"
+                }
+            ],
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 324,
+            "description": "Called before end and handle close animation. Trigger \"beforeClose\" event.",
+            "itemtype": "method",
+            "name": "_beforeEnd",
+            "access": "private",
+            "tagname": "",
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 345,
+            "description": "Destroy toast and trigger \"afterclose\" event.",
+            "itemtype": "method",
+            "name": "_end",
+            "access": "private",
+            "tagname": "",
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 360,
+            "description": "Reposition method, position toast during initialisation and later.",
+            "itemtype": "method",
+            "name": "reposition",
+            "access": "protected",
+            "tagname": "",
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 376,
+            "description": "Open method, open toast and auto-close it after duration",
+            "itemtype": "method",
+            "name": "open",
+            "access": "protected",
+            "tagname": "",
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        }
+    ],
+    "warnings": []
+}

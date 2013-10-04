@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/jquery.mobile.toast.js - jquery-mobile-toast</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="jquery-mobile-toast"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.0.4</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/$.mobile.toast.html">$.mobile.toast</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/jquery.mobile.toast.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+;(function ( $, window, document, undefined ) {
+
+    &quot;use strict&quot;;
+
+    /**
+     * A jQuery Mobile Android-like Toast Plugin.
+     * 
+     * @class toast
+     * @constructor
+     * @namespace $.mobile
+     * @extends widget
+     * @chainable
+     * @example
+     *     $.mobile.toast({ message: &#x27;Live long and prosper!&#x27; });
+     */
+    $.widget( &quot;mobile.toast&quot;, $.mobile.widget, {
+
+        /**
+         * Version of the widget
+         * 
+         * @property {String} version
+         */
+        version: &quot;0.0.4&quot;,
+
+        /**
+         * Options of this widget
+         * 
+         * @property {Object} options
+         */
+        options: {
+            /**
+             * The message of the toast.
+             * 
+             * @attribute {String} message
+             * @default &quot;&quot;
+             * @example
+             *     $.mobile.toast({ message: &#x27;Live long and prosper&#x27; });
+             * @example
+             *     // Change default value
+             *     $.mobile.toast.prototype.options.message = &#x27;Live long and prosper&#x27;;
+             */
+            message: &quot;&quot;,
+
+            /**
+             * Duration of message show to the user.
+             * 
+             * @attribute {Number} duration
+             * @default 1500
+             * @example
+             *     $.mobile.toast({
+             *         message: &#x27;Live long and prosper&#x27;,
+             *         duration: 2000
+             *     });
+             * @example
+             *     // Change default value
+             *     $.mobile.toast.prototype.options.duration = 2000;
+             */
+            duration: 1500,
+
+            /**
+             * Optional class to overwrite styling of toast on open.
+             * 
+             * @attribute {String} classOnOpen
+             * @default &quot;&quot;
+             * @example
+             *     $.mobile.toast({
+             *         message: &#x27;Live long and prosper&#x27;,
+             *         classOnOpen: &#x27;pomegranate&#x27;
+             *     });
+             * @example
+             *     // Change default value
+             *     $.mobile.toast.prototype.options.classOnOpen = &#x27;pomegranate&#x27;;
+             */
+            classOnOpen: &quot;&quot;,
+
+            /**
+             * Optional class to overwrite styling of toast on close.
+             * 
+             * @attribute {String} classOnClose
+             * @default &quot;&quot;
+             * @example
+             *     $.mobile.toast({
+             *         message: &#x27;Live long and prosper&#x27;,
+             *         classOnClose: &#x27;pomegranate&#x27;
+             *     });
+             * @example
+             *     // Change default value
+             *     $.mobile.toast.prototype.options.classOnClose = &#x27;pomegranate&#x27;;
+             */
+            classOnClose: &quot;&quot;,
+
+            /**
+             * Before position callback
+             * 
+             * @attribute {function} beforeposition
+             * @event beforeposition
+             * @default null
+             * @example
+             *     $.mobile.toast({
+             *         message: &#x27;Live long and prosper!&#x27;,
+             *         beforeposition: function( event, ui ){
+             *             console.log(&#x27;beforeposition&#x27;);
+             *         }
+             *     });
+             * @example
+             *     $.mobile.toast.on(&#x27;toastbeforeposition&#x27;, function( event, ui ){});
+             */
+            beforeposition: null,
+
+            /**
+             * After close callback
+             * 
+             * @attribute {function} afterclose
+             * @event afterclose
+             * @default null
+             * @example
+             *     $.mobile.toast({
+             *         message: &#x27;Live long and prosper!&#x27;,
+             *         afterclose: function( event, ui ){
+             *             console.log(&#x27;afterclose&#x27;);
+             *         }
+             *     });
+             * @example
+             *     $.mobile.toast.on(&#x27;toastafterclose&#x27;, function( event, ui ){});
+             */
+            afterclose: null,
+
+            /**
+             * After open callback
+             * 
+             * @attribute {function} afteropen
+             * @event afteropen
+             * @default null
+             * @example
+             *     $.mobile.toast({
+             *         message: &#x27;Live long and prosper!&#x27;,
+             *         afteropen: function( event, ui ){
+             *             console.log(&#x27;afteropen&#x27;);
+             *         }
+             *     });
+             * @example
+             *     $.mobile.toast.on(&#x27;toastafteropen&#x27;, function( event, ui ){});
+             */
+            afteropen: null
+        },
+
+        /**
+         * Constructor method, called automaticly
+         * @constructor
+         * @method _create
+         * @private
+         */
+
+        /**
+         * Create callback
+         * 
+         * @event create
+         * @example
+         *     $.mobile.toast({
+         *         message: &#x27;Live long and prosper!&#x27;,
+         *         create: function( event, ui ){
+         *             console.log(&#x27;create&#x27;);
+         *         }
+         *     });
+         * @example
+         *     $.mobile.toast.on(&#x27;toastcreate&#x27;, function( event, ui ){});
+         */
+        _create: function() {
+
+            // Cache page and content area
+            this.$p = $.mobile.activePage;
+            this.$c = $(&quot;:jqmData(role=&#x27;content&#x27;)&quot;, this.$p);
+
+            // Render toast
+            this.$toast = this._renderToast();
+
+            // Append to content
+            this._addToPage();
+
+            // Position toast
+            this.reposition();
+
+            // Show toast to user
+            this.open();
+        },
+
+        /**
+         * Render text method, render and style message in paragraph
+         * 
+         * @method _renderText
+         * @private
+         * @return {object} jQuery fragment
+         */
+        _renderText: function() {
+            return $(&quot;&lt;p&gt;&quot; + this.options.message + &quot;&lt;/p&gt;&quot;).css({
+                &quot;max-width&quot;:  &quot;160px&quot;,
+
+                &quot;margin&quot;:     &quot;0&quot;,
+                &quot;padding&quot;:    &quot;6px 12px&quot;,
+
+                &quot;font-size&quot;:  &quot;16px&quot;,
+                &quot;color&quot;:      &quot;#FFFFFF&quot;,
+                &quot;text-shadow&quot;:&quot;none&quot;,
+
+                &quot;border&quot;:     &quot;none&quot;
+            });
+        },
+
+        /**
+         * Render toast method, render and style paragraph in container
+         * 
+         * @method _renderToast
+         * @private
+         * @return {object} jQuery fragment
+         */
+        _renderToast: function() {
+            return $(&quot;&lt;div data-role=&#x27;toast&#x27;&gt;&lt;/div&gt;&quot;)
+                .html(this._renderText())
+                .css({
+                    &quot;display&quot;:               &quot;none&quot;,
+                    &quot;position&quot;:              &quot;fixed&quot;,
+                    &quot;z-index&quot;:               &quot;1100&quot;,
+
+                    &quot;background-color&quot;:      &quot;#34495e&quot;,
+
+                    &quot;-webkit-border-radius&quot;: &quot;6px&quot;,
+                    &quot;border-radius&quot;:         &quot;6px&quot;,
+
+                    &quot;background-clip&quot;:       &quot;padding-box&quot;
+                })
+                .addClass(this.options.classOnOpen);
+        },
+
+        /**
+         * Add toast to page
+         * 
+         * @method _addToPage
+         * @private
+         */
+        _addToPage: function() {
+            this.$c.append( this.$toast );
+        },
+
+        /**
+         * Calculates top, left coordinates to postion toast
+         * 
+         * @method _getToastCoordinates
+         * @private
+         * @return {object} Position object
+         */
+        _getToastCoordinates: function() {
+            var toastDimensions = {
+                width:  this.$toast.width(),
+                height: this.$toast.height()
+            },
+            windowCoordinates = this._getWindowCoordinates(),
+            factor = (windowCoordinates.height &gt;= windowCoordinates.width) ? 80 : 80;
+
+            return {
+                top: (windowCoordinates.height * factor) / 100,
+                left: (windowCoordinates.width / 2) - (toastDimensions.width / 2)
+            };
+        },
+
+        /**
+         * Get position an size of page
+         * 
+         * @method _getWindowCoordinates
+         * @private
+         * @return {object} Position/size object
+         */
+        _getWindowCoordinates: function () {
+            var theWindow = $.mobile.window;
+
+            return {
+                x: theWindow.scrollLeft(),
+                y: theWindow.scrollTop(),
+                width: ( window.innerWidth || theWindow.width() ),
+                height: ( window.innerHeight || theWindow.height() )
+            };
+        },
+
+        /**
+         * Remove toast from page
+         * 
+         * @method _destroy
+         * @private
+         */
+        _destroy: function () {
+            this.$toast.remove();
+        },
+
+        /**
+         * Called whenever the option() method is called, regardless of the form in which the option() method was called.
+         * Overriding this is useful if you can defer processor-intensive changes for multiple option changes.
+         * 
+         * @method _setOptions
+         * @private
+         */
+        _setOptions: function () {
+            this._superApply( arguments );
+        },
+
+        /**
+         * Called from the _setOptions() method for each individual option. Widget state should be updated based on changes.
+         * 
+         * @method _setOption
+         * @private
+         * @param {String} key The name of the option to set.
+         * @param {Object} value A value to set for the option.
+         */
+        _setOption: function ( key, value ) {
+            if( key === &quot;message&quot; ) {
+                // Trim message
+                value = $.trim(value);
+                // Prevent empty message
+                if ( value === &quot;&quot; ) {
+                    return;
+                }
+            }
+            this._super( key, value );
+        },
+
+        /**
+         * Called before end and handle close animation. Trigger &quot;beforeClose&quot; event.
+         * 
+         * @method _beforeEnd
+         * @private
+         */
+        _beforeEnd: function() {
+            this._trigger(&quot;beforeClose&quot;);
+
+            if(this.options.classOnClose !== &quot;&quot;) {
+                this.$toast
+                    .addClass(this.options.classOnClose)
+                    .on(&quot;animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd&quot;, $.proxy(function(){
+                        this._end();
+                    }, this));
+            } else {
+                // Default
+                this.$toast.fadeOut(500, $.proxy(this._end, this));
+            }
+        },
+
+        /**
+         * Destroy toast and trigger &quot;afterclose&quot; event.
+         * 
+         * @method _end
+         * @private
+         */
+        _end: function() {
+            this.destroy();
+            this._trigger(&quot;afterclose&quot;);
+        },
+
+        /*
+        | Public methods ------------------------------------------------------
+        */
+
+        /**
+         * Reposition method, position toast during initialisation and later.
+         * 
+         * @method reposition
+         * @protected
+         */
+        reposition: function() {
+            this._trigger(&quot;beforeposition&quot;);
+
+            var coordinates = this._getToastCoordinates();
+            this.$toast.css({
+                &quot;top&quot;:     coordinates.top,
+                &quot;left&quot;:    coordinates.left
+            });
+        },
+
+        /**
+         * Open method, open toast and auto-close it after duration
+         * 
+         * @method open
+         * @protected
+         */
+        open: function() {
+            this.$toast.css({&quot;display&quot;: &quot;inline-block&quot;});
+            this._trigger(&quot;afteropen&quot;);
+
+            window.setTimeout($.proxy(this._beforeEnd, this), this.options.duration);
+        }
+    });
+
+})( jQuery, window, document );
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
