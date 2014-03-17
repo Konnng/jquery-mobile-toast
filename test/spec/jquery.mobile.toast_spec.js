@@ -1,7 +1,7 @@
 /* global $, describe, it, expect, afterEach */
 describe("jquery.mobile.toast", function() {
-    it("version should be 0.0.4", function() {
-        expect($.mobile.toast.version).toEqual("0.0.4");
+    it("version should be 0.0.5", function() {
+        expect($.mobile.toast.version).toEqual("0.0.5");
     });
     describe("defaults", function() {
         it("option 'message' should be an empty string by default", function() {

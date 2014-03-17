@@ -13,14 +13,14 @@
      * @example
      *     $.mobile.toast({ message: 'Live long and prosper!' });
      */
-    $.widget( "mobile.toast", $.mobile.widget, {
+    $.widget( "mobile.toast", {
 
         /**
          * Version of the widget
          * 
          * @property {String} version
          */
-        version: "0.0.4",
+        version: "0.0.5",
 
         /**
          * Options of this widget

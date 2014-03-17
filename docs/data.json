@@ -2,7 +2,7 @@
     "project": {
         "name": "jquery-mobile-toast",
         "description": "A jQuery Mobile Android-like Toast Plugin.",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "url": "https://github.com/TobiasHennig/jquery-mobile-toast"
     },
     "files": {

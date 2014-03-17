@@ -1,6 +1,11 @@
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+
 # jquery.mobile.toast
 
 > A jQuery Mobile Android-like Toast Plugin.
+
+![image](showroom.png)
+
 
 ## Getting started
 
@@ -32,6 +37,10 @@ $.mobile.toast({
 ### Optional requirements
 
 * [Animate.cc](http://daneden.me/animate/)
+
+## Development
+
+Run `npm install` to install dependencies. Run `grunt` to minify, test and generate documentation.
 
 ## Options
 
@@ -203,6 +212,11 @@ $.mobile.toast({
 ```
 
 ## Release History
+
+#### 0.0.5 (2014-03-17)
+* base widget ($.mobile.widget) removed, deprecated as of jQuery Mobile 1.4 and will be removed in 1.5
+* update demo to jQuery Mobile 1.4
+* add new custom theme "KitKat"
 
 #### 0.0.4 (2013-10-02)
 * increase font size
