@@ -36,6 +36,14 @@ module.exports = function(grunt) {
 			}
 		},
 
+		// Check code style
+		jscs: {
+		    files: ["src/jquery.mobile.toast.js"],
+		    options: {
+		        config: ".jscsrc"
+		    }
+		},
+
 		// Minify definitions
 		uglify: {
 			all: {
@@ -92,8 +100,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-yuidoc");
 	grunt.loadNpmTasks("grunt-contrib-watch");
 	grunt.loadNpmTasks("grunt-contrib-jasmine");
+	grunt.loadNpmTasks("grunt-jscs");
 
-	grunt.registerTask("default", ["jshint", "clean","concat", "uglify", "jasmine", "yuidoc"]);
+	grunt.registerTask("default", ["jshint", "jscs", "clean","concat", "uglify", "jasmine", "yuidoc"]);
 	grunt.registerTask("test", ["jasmine"]);
 
 };

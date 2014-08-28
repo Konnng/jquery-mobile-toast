@@ -1,20 +1,18 @@
 {
-    "globals": {
-        "jQuery": false,
-        "window": false,
-        "document": false
-    },
-    "boss": true,
+    "node": true,
+    "jquery": true,
+    "browser": true,
+    "esnext": true,
+    "bitwise": true,
+    "camelcase": true,
     "curly": true,
     "eqeqeq": true,
-    "eqnull": true,
-    "expr": true,
     "immed": true,
+    "indent": 4,
+    "newcap": true,
     "noarg": true,
-    "onevar": true,
     "quotmark": "double",
-    "smarttabs": true,
-    "trailing": true,
     "undef": true,
-    "unused": true
+    "unused": "vars",
+    "strict": true
 }

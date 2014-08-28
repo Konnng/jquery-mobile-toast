@@ -7,13 +7,13 @@
  * Licensed under the MIT license.
  */
 
-;(function ( $, window, document, undefined ) {
+;(function( $, window, document, undefined ) {
 
     "use strict";
 
     /**
      * A jQuery Mobile Android-like Toast Plugin.
-     * 
+     *
      * @class toast
      * @constructor
      * @namespace $.mobile
@@ -26,20 +26,20 @@
 
         /**
          * Version of the widget
-         * 
+         *
          * @property {String} version
          */
         version: "0.0.5",
 
         /**
          * Options of this widget
-         * 
+         *
          * @property {Object} options
          */
         options: {
             /**
              * The message of the toast.
-             * 
+             *
              * @attribute {String} message
              * @default ""
              * @example
@@ -52,7 +52,7 @@
 
             /**
              * Duration of message show to the user.
-             * 
+             *
              * @attribute {Number} duration
              * @default 1500
              * @example
@@ -68,7 +68,7 @@
 
             /**
              * Optional class to overwrite styling of toast on open.
-             * 
+             *
              * @attribute {String} classOnOpen
              * @default ""
              * @example
@@ -84,7 +84,7 @@
 
             /**
              * Optional class to overwrite styling of toast on close.
-             * 
+             *
              * @attribute {String} classOnClose
              * @default ""
              * @example
@@ -100,7 +100,7 @@
 
             /**
              * Before position callback
-             * 
+             *
              * @attribute {function} beforeposition
              * @event beforeposition
              * @default null
@@ -118,7 +118,7 @@
 
             /**
              * After close callback
-             * 
+             *
              * @attribute {function} afterclose
              * @event afterclose
              * @default null
@@ -136,7 +136,7 @@
 
             /**
              * After open callback
-             * 
+             *
              * @attribute {function} afteropen
              * @event afteropen
              * @default null
@@ -162,7 +162,7 @@
 
         /**
          * Create callback
-         * 
+         *
          * @event create
          * @example
          *     $.mobile.toast({
@@ -195,7 +195,7 @@
 
         /**
          * Render text method, render and style message in paragraph
-         * 
+         *
          * @method _renderText
          * @private
          * @return {object} jQuery fragment
@@ -217,7 +217,7 @@
 
         /**
          * Render toast method, render and style paragraph in container
-         * 
+         *
          * @method _renderToast
          * @private
          * @return {object} jQuery fragment
@@ -242,7 +242,7 @@
 
         /**
          * Add toast to page
-         * 
+         *
          * @method _addToPage
          * @private
          */
@@ -252,7 +252,7 @@
 
         /**
          * Calculates top, left coordinates to postion toast
-         * 
+         *
          * @method _getToastCoordinates
          * @private
          * @return {object} Position object
@@ -273,12 +273,12 @@
 
         /**
          * Get position an size of page
-         * 
+         *
          * @method _getWindowCoordinates
          * @private
          * @return {object} Position/size object
          */
-        _getWindowCoordinates: function () {
+        _getWindowCoordinates: function() {
             var theWindow = $.mobile.window;
 
             return {
@@ -291,35 +291,38 @@
 
         /**
          * Remove toast from page
-         * 
+         *
          * @method _destroy
          * @private
          */
-        _destroy: function () {
+        _destroy: function() {
             this.$toast.remove();
         },
 
         /**
-         * Called whenever the option() method is called, regardless of the form in which the option() method was called.
-         * Overriding this is useful if you can defer processor-intensive changes for multiple option changes.
-         * 
+         * Called whenever the option() method is called, regardless of the form in which the
+         * option() method was called.
+         * Overriding this is useful if you can defer processor-intensive changes for multiple
+         * option changes.
+         *
          * @method _setOptions
          * @private
          */
-        _setOptions: function () {
+        _setOptions: function() {
             this._superApply( arguments );
         },
 
         /**
-         * Called from the _setOptions() method for each individual option. Widget state should be updated based on changes.
-         * 
+         * Called from the _setOptions() method for each individual option. Widget state should be
+         * updated based on changes.
+         *
          * @method _setOption
          * @private
          * @param {String} key The name of the option to set.
          * @param {Object} value A value to set for the option.
          */
-        _setOption: function ( key, value ) {
-            if( key === "message" ) {
+        _setOption: function( key, value ) {
+            if ( key === "message" ) {
                 // Trim message
                 value = $.trim(value);
                 // Prevent empty message
@@ -332,19 +335,20 @@
 
         /**
          * Called before end and handle close animation. Trigger "beforeClose" event.
-         * 
+         *
          * @method _beforeEnd
          * @private
          */
         _beforeEnd: function() {
             this._trigger("beforeClose");
 
-            if(this.options.classOnClose !== "") {
+            if (this.options.classOnClose !== "") {
                 this.$toast
                     .addClass(this.options.classOnClose)
-                    .on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", $.proxy(function(){
-                        this._end();
-                    }, this));
+                    .on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd",
+                        $.proxy(function() {
+                            this._end();
+                        }, this));
             } else {
                 // Default
                 this.$toast.fadeOut(500, $.proxy(this._end, this));
@@ -353,7 +357,7 @@
 
         /**
          * Destroy toast and trigger "afterclose" event.
-         * 
+         *
          * @method _end
          * @private
          */
@@ -368,7 +372,7 @@
 
         /**
          * Reposition method, position toast during initialisation and later.
-         * 
+         *
          * @method reposition
          * @protected
          */
@@ -384,12 +388,12 @@
 
         /**
          * Open method, open toast and auto-close it after duration
-         * 
+         *
          * @method open
          * @protected
          */
         open: function() {
-            this.$toast.css({"display": "inline-block"});
+            this.$toast.css({ "display": "inline-block" });
             this._trigger("afteropen");
 
             window.setTimeout($.proxy(this._beforeEnd, this), this.options.duration);
