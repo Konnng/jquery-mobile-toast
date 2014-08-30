@@ -98,7 +98,7 @@ $.mobile.toast({
 $.mobile.toast.prototype.options.classOnOpen = 'pomegranate';
 ```
 
-### classOnClose (Type: String)
+### classOnClose
 
 Type: `String`  
 Default: `""`
