@@ -61,7 +61,7 @@ $.mobile.toast.prototype.options.message = 'Live long and prosper';
 
 ### duration (Type: Number)
 
-**Default:** 1500
+**Default:** 2000
 
 Duration of message show to the user.
 
@@ -126,13 +126,13 @@ $.mobile.toast({
 ```
 
 ### Example 2: Looong toast
-Toast with a 3000ms duration, default is 1500ms.
+Toast with a 3000ms duration, default is 2000ms.
 
 Javascript:
 ```javascript
 $.mobile.toast({
     message: 'Live long and prosper!',
-    duration: 3000
+    duration: 'long'
 });
 ```
 
@@ -212,6 +212,9 @@ $.mobile.toast({
 ```
 
 ## Release History
+
+#### 0.0.6 (2014-08-30)
+* option `duration` with text version "short" (2000 ms) or "long" (3500ms)
 
 #### 0.0.5 (2014-03-17)
 * base widget ($.mobile.widget) removed, deprecated as of jQuery Mobile 1.4 and will be removed in 1.5

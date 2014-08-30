@@ -29,7 +29,7 @@
          *
          * @property {String} version
          */
-        version: "0.0.5",
+        version: "0.0.6",
 
         /**
          * Options of this widget
@@ -53,8 +53,8 @@
             /**
              * Duration of message show to the user.
              *
-             * @attribute {Number} duration
-             * @default 1500
+             * @attribute {Number or String} duration
+             * @default 2000
              * @example
              *     $.mobile.toast({
              *         message: 'Live long and prosper',
@@ -64,7 +64,7 @@
              *     // Change default value
              *     $.mobile.toast.prototype.options.duration = 2000;
              */
-            duration: 1500,
+            duration: 2000,
 
             /**
              * Optional class to overwrite styling of toast on open.
@@ -175,6 +175,8 @@
          *     $.mobile.toast.on('toastcreate', function( event, ui ){});
          */
         _create: function() {
+            // Parse initial options
+            this._parseOptions();
 
             // Cache page and content area
             this.$p = $.mobile.activePage;
@@ -191,6 +193,40 @@
 
             // Show toast to user
             this.open();
+        },
+
+        /**
+         * Call parse functions for options
+         *
+         * @method _parseOptions
+         * @private
+         */
+        _parseOptions: function() {
+            this.options.duration = this._parseDurationOption(this.options.duration);
+        },
+
+        /**
+         * Parse function for "duration" option
+         *
+         * @method _parseDurationOption
+         * @private
+         * @return {number} Duration in ms
+         */
+        _parseDurationOption: function(value) {
+            if (typeof value === "string") {
+                switch (value) {
+                    case "short":
+                        value = 2500;
+                        break;
+                    case "long":
+                        value = 3500;
+                        break;
+                    default:
+                        value = 2000;
+                        break;
+                }
+            }
+            return value;
         },
 
         /**
@@ -330,6 +366,9 @@
                     return;
                 }
             }
+            if ( key === "duration" ) {
+                value = this._parseDurationOption(value);
+            }
             this._super( key, value );
         },
 
@@ -395,7 +434,6 @@
         open: function() {
             this.$toast.css({ "display": "inline-block" });
             this._trigger("afteropen");
-
             window.setTimeout($.proxy(this._beforeEnd, this), this.options.duration);
         }
     });

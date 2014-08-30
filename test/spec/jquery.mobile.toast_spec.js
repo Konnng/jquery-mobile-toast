@@ -1,14 +1,16 @@
 /* global $, describe, it, expect, afterEach */
 describe("jquery.mobile.toast", function() {
-    it("version should be 0.0.5", function() {
-        expect($.mobile.toast.version).toEqual("0.0.5");
+    "use strict";
+
+    it("version should be 0.0.6", function() {
+        expect($.mobile.toast.version).toEqual("0.0.6");
     });
     describe("defaults", function() {
         it("option 'message' should be an empty string by default", function() {
             expect($.mobile.toast.prototype.options.message).toEqual("");
         });
-        it("option 'duration' should be 1500 by default", function() {
-            expect($.mobile.toast.prototype.options.duration).toEqual(1500);
+        it("option 'duration' should be 2000 by default", function() {
+            expect($.mobile.toast.prototype.options.duration).toEqual(2000);
         });
         it("option 'classOnOpen' should be an empty string by default", function() {
             expect($.mobile.toast.prototype.options.classOnOpen).toEqual("");
@@ -22,7 +24,7 @@ describe("jquery.mobile.toast", function() {
         afterEach(function() {
             $.mobile.toast.prototype.options = {
                 "message": "",
-                "duration": 1500,
+                "duration": 2000,
                 "classOnOpen": "",
                 "classOnClose": ""
             };
