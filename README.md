@@ -44,9 +44,10 @@ Run `npm install` to install dependencies. Run `grunt` to minify, test and gener
 
 ## Options
 
-### message (Type: String)
+### message
 
-**Default:** ''
+Type: `String`
+Default: ``
 
 The message of the toast.
 
@@ -59,9 +60,10 @@ $.mobile.toast({ message: 'Live long and prosper' });
 $.mobile.toast.prototype.options.message = 'Live long and prosper';
 ```
 
-### duration (Type: Number)
+### duration
 
-**Default:** 2000
+Type: `Number or String`
+Default: `2000`
 
 Duration of message show to the user.
 
@@ -77,9 +79,10 @@ $.mobile.toast({
 $.mobile.toast.prototype.options.duration = 2000;
 ```
 
-### classOnOpen (Type: String)
+### classOnOpen
 
-**Default:** ''
+Type: `String`
+Default: ``
 
 Optional class to overwrite styling of toast on open.
 
@@ -97,7 +100,8 @@ $.mobile.toast.prototype.options.classOnOpen = 'pomegranate';
 
 ### classOnClose (Type: String)
 
-**Default:** ''
+Type: `String`
+Default: ``
 
 Optional class to overwrite styling of toast on close.
 
