@@ -82,7 +82,7 @@ $.mobile.toast.prototype.options.duration = 2000;
 ### classOnOpen
 
 Type: `String`  
-Default: ``
+Default: `""`
 
 Optional class to overwrite styling of toast on open.
 
@@ -101,7 +101,7 @@ $.mobile.toast.prototype.options.classOnOpen = 'pomegranate';
 ### classOnClose (Type: String)
 
 Type: `String`  
-Default: ``
+Default: `""`
 
 Optional class to overwrite styling of toast on close.
 
