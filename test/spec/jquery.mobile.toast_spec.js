@@ -2,8 +2,8 @@
 describe("jquery.mobile.toast", function() {
     "use strict";
 
-    it("version should be 0.0.6", function() {
-        expect($.mobile.toast.version).toEqual("0.0.6");
+    it("version should be 0.0.7", function() {
+        expect($.mobile.toast.version).toEqual("0.0.7");
     });
     describe("defaults", function() {
         it("option 'message' should be an empty string by default", function() {
@@ -20,7 +20,7 @@ describe("jquery.mobile.toast", function() {
         });
     });
 
-    describe("overwritten defaults", function(){
+    describe("overwritten defaults", function() {
         afterEach(function() {
             $.mobile.toast.prototype.options = {
                 "message": "",

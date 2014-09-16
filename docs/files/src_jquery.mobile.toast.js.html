@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.0.5</em>
+            <em>API Docs for: 0.0.7</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -108,7 +108,7 @@
          *
          * @property {String} version
          */
-        version: &quot;0.0.6&quot;,
+        version: &quot;0.0.7&quot;,
 
         /**
          * Options of this widget
@@ -259,7 +259,7 @@
 
             // Cache page and content area
             this.$p = $.mobile.activePage;
-            this.$c = $(&quot;:jqmData(role=&#x27;content&#x27;)&quot;, this.$p);
+            this.$c = $(&quot;.ui-content&quot;, this.$p);
 
             // Render toast
             this.$toast = this._renderToast();

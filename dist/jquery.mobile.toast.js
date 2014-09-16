@@ -1,5 +1,5 @@
 /*
- * jquery-mobile-toast - v0.0.5
+ * jquery-mobile-toast - v0.0.7
  * A jQuery Mobile Android-like Toast Plugin.
  * https://github.com/TobiasHennig/jquery-mobile-toast
  *
@@ -29,7 +29,7 @@
          *
          * @property {String} version
          */
-        version: "0.0.6",
+        version: "0.0.7",
 
         /**
          * Options of this widget
@@ -180,7 +180,7 @@
 
             // Cache page and content area
             this.$p = $.mobile.activePage;
-            this.$c = $(":jqmData(role='content')", this.$p);
+            this.$c = $(".ui-content", this.$p);
 
             // Render toast
             this.$toast = this._renderToast();
