@@ -7,9 +7,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
     <link rel="stylesheet" href="animate.min.css">
     
     <style>
@@ -70,76 +70,20 @@
             <h1>Demo</h1>
         </div><!-- /header -->
 
-        <div data-role="content">
-            <a id="default" href="#" data-role="button">Default</a>
-            <a id="longer" href="#" data-role="button">Longer</a>
-            <a id="custom" href="#" data-role="button">Custom styling</a>
-            <a id="custom-kitkat" href="#" data-role="button">Custom styling (KitKat)</a>
-            <a id="close-event" href="#" data-role="button">Close event</a>
-            <a id="animate-css" href="#" data-role="button">Animate.css (In)</a>
-            <a id="animate-css2" href="#" data-role="button">Animate.css (In/Out)</a>
+        <div role="main" class="ui-content">
+            <a id="default" href="#" class="ui-btn">Default</a>
+            <a id="longer" href="#" class="ui-btn">Longer</a>
+            <a id="custom" href="#" class="ui-btn">Custom styling</a>
+            <a id="custom-kitkat" href="#" class="ui-btn">Custom styling (KitKat)</a>
+            <a id="close-event" href="#" class="ui-btn">Close event</a>
+            <a id="animate-css" href="#" class="ui-btn">Animate.css (In)</a>
+            <a id="animate-css2" href="#" class="ui-btn">Animate.css (In/Out)</a>
         </div><!-- /content -->
 
     </div><!-- /page -->
 
     <script src="../dist/jquery.mobile.toast.min.js"></script>
-
-    <script>
-        $( document ).on( "pageinit", "#demoPage", function( event ) {
-            
-            $('#default').on('tap', function(){
-                $.mobile.toast({
-                    message: 'Live long and prosper!'
-                });
-            });
-
-            $('#longer').on('tap', function(){
-                $.mobile.toast({
-                    message: 'Live long and prosper!',
-                    duration: 'long'
-                });
-            });
-
-            $('#custom').on('tap', function(){
-                $.mobile.toast({
-                    message: 'Live long and prosper!',
-                    classOnOpen: 'pomegranate'
-                });
-            });
-
-            $('#custom-kitkat').on('tap', function(){
-                $.mobile.toast({
-                    message: 'Live long and prosper!',
-                    classOnOpen: 'kitkat'
-                });
-            });
-
-            $('#close-event').on('tap', function(){
-                $.mobile.toast({
-                    message: 'Live long and prosper!',
-                    afterclose: function( event, ui ){
-                        alert('Toast closed!');
-                    }
-                });
-            });
-
-            $('#animate-css').on('tap', function(){
-                $.mobile.toast({
-                    message: 'Live long and prosper!',
-                    classOnOpen: 'animated bounceInUp'
-                });
-            });
-
-            $('#animate-css2').on('tap', function(){
-                $.mobile.toast({
-                    message: 'Live long and prosper!',
-                    classOnOpen: 'animated slideInLeft',
-                    classOnClose: 'slideOutRight'
-                });
-            });
-
-        });
-    </script>
+    <script src="examples.js"></script>
 
     </body>
 </html>
