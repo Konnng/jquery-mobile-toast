@@ -309,19 +309,11 @@
          * @return {object} Position/size object
          */
         _getWindowCoordinates: function() {
-            var theWindow = $.mobile.window,
-                sl     = theWindow.scrollLeft(),
-                st     = theWindow.scrollTop(),
-                width  = theWindow.width(),
-                height = theWindow.height();
-
-            theWindow = null;
-
             return {
-                x: sl,
-                y: st,
-                width: ( window.innerWidth || width ),
-                height: ( window.innerHeight || height )
+                x: $.mobile.window.scrollLeft(),
+                y: $.mobile.window.scrollTop(),
+                width: ( window.innerWidth || $.mobile.window.width() ),
+                height: ( window.innerHeight || $.mobile.window.height() )
             };
         },
 
@@ -429,9 +421,10 @@
             this._trigger("beforeposition");
 
             var coordinates = this._getToastCoordinates();
+
             this.$toast.css({
-                "top":     coordinates.top,
-                "left":    coordinates.left
+                "top":  coordinates.top,
+                "left": coordinates.left
             });
         },
 

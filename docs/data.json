@@ -290,7 +290,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 328,
+            "line": 320,
             "description": "Remove toast from page",
             "itemtype": "method",
             "name": "_destroy",
@@ -301,7 +301,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 348,
+            "line": 340,
             "description": "Called whenever the option() method is called, regardless of the form in which the\noption() method was called.\nOverriding this is useful if you can defer processor-intensive changes for multiple\noption changes.",
             "itemtype": "method",
             "name": "_setOptions",
@@ -312,7 +312,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 361,
+            "line": 353,
             "description": "Called from the _setOptions() method for each individual option. Widget state should be\nupdated based on changes.",
             "itemtype": "method",
             "name": "_setOption",
@@ -335,7 +335,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 385,
+            "line": 377,
             "description": "Called before end and handle close animation. Trigger \"beforeClose\" event.",
             "itemtype": "method",
             "name": "_beforeEnd",
@@ -346,7 +346,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 407,
+            "line": 399,
             "description": "Destroy toast and trigger \"afterclose\" event.",
             "itemtype": "method",
             "name": "_end",
@@ -357,7 +357,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 422,
+            "line": 414,
             "description": "Reposition method, position toast during initialisation and later.",
             "itemtype": "method",
             "name": "reposition",
@@ -368,7 +368,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 438,
+            "line": 431,
             "description": "Open method, open toast and auto-close it after duration",
             "itemtype": "method",
             "name": "open",
