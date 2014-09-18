@@ -141,7 +141,9 @@
              * @example
              *     $.mobile.toast.on('toastafteropen', function( event, ui ){});
              */
-            afteropen: null
+            afteropen: null,
+
+            timer: null
         },
 
         /**
@@ -166,6 +168,7 @@
          *     $.mobile.toast.on('toastcreate', function( event, ui ){});
          */
         _create: function() {
+            console.log("_create");
             // Parse initial options
             this._parseOptions();
 
@@ -306,13 +309,19 @@
          * @return {object} Position/size object
          */
         _getWindowCoordinates: function() {
-            var theWindow = $.mobile.window;
+            var theWindow = $.mobile.window,
+                sl     = theWindow.scrollLeft(),
+                st     = theWindow.scrollTop(),
+                width  = theWindow.width(),
+                height = theWindow.height();
+
+            theWindow = null;
 
             return {
-                x: theWindow.scrollLeft(),
-                y: theWindow.scrollTop(),
-                width: ( window.innerWidth || theWindow.width() ),
-                height: ( window.innerHeight || theWindow.height() )
+                x: sl,
+                y: st,
+                width: ( window.innerWidth || width ),
+                height: ( window.innerHeight || height )
             };
         },
 
@@ -323,7 +332,17 @@
          * @private
          */
         _destroy: function() {
+            // Remove toast
             this.$toast.remove();
+
+            // Reset cached elements
+            this.$p = null;
+            this.$c = null;
+            this.$toast = null;
+
+            // Clear timer
+            window.clearTimeout(this.timer);
+            this.timer = null;
         },
 
         /**
@@ -425,7 +444,7 @@
         open: function() {
             this.$toast.css({ "display": "inline-block" });
             this._trigger("afteropen");
-            window.setTimeout($.proxy(this._beforeEnd, this), this.options.duration);
+            this.timer = window.setTimeout($.proxy(this._beforeEnd, this), this.options.duration);
         }
     });
 
