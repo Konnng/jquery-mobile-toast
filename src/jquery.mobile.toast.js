@@ -42,7 +42,8 @@
             message: "",
 
             /**
-             * Duration of message show to the user.
+             * Duration of message show to the user. Possible values: "short",
+             * "long" number in milliseconds.
              *
              * @attribute {Number or String} duration
              * @default 2000
@@ -56,6 +57,23 @@
              *     $.mobile.toast.prototype.options.duration = 2000;
              */
             duration: 2000,
+
+            /**
+             * Position of message. Possible values: "top", "center", "bottom"
+             * or number in percent.
+             *
+             * @attribute {Number or String} position
+             * @default 80
+             * @example
+             *     $.mobile.toast({
+             *         message: 'Live long and prosper',
+             *         position: 'top'
+             *     });
+             * @example
+             *     // Change default value
+             *     $.mobile.toast.prototype.options.postion = 'top';
+             */
+            position: 80,
 
             /**
              * Optional class to overwrite styling of toast on open.
@@ -141,9 +159,7 @@
              * @example
              *     $.mobile.toast.on('toastafteropen', function( event, ui ){});
              */
-            afteropen: null,
-
-            timer: null
+            afteropen: null
         },
 
         /**
@@ -168,7 +184,6 @@
          *     $.mobile.toast.on('toastcreate', function( event, ui ){});
          */
         _create: function() {
-            console.log("_create");
             // Parse initial options
             this._parseOptions();
 
@@ -197,6 +212,7 @@
          */
         _parseOptions: function() {
             this.options.duration = this._parseDurationOption(this.options.duration);
+            this.options.position = this._parsePositionOption(this.options.position);
         },
 
         /**
@@ -217,6 +233,26 @@
                         break;
                     default:
                         value = 2000;
+                        break;
+                }
+            }
+            return value;
+        },
+
+        _parsePositionOption: function(value) {
+            if (typeof value === "string") {
+                switch (value) {
+                    case "top":
+                        value = 20;
+                        break;
+                    case "center":
+                        value = 50;
+                        break;
+                    case "bottom":
+                        value = 80;
+                        break;
+                    default:
+                        value = 80;
                         break;
                 }
             }
@@ -292,11 +328,10 @@
                 width:  this.$toast.width(),
                 height: this.$toast.height()
             },
-            windowCoordinates = this._getWindowCoordinates(),
-            factor = (windowCoordinates.height >= windowCoordinates.width) ? 80 : 80;
+            windowCoordinates = this._getWindowCoordinates();
 
             return {
-                top: (windowCoordinates.height * factor) / 100,
+                top: (windowCoordinates.height * this.options.position) / 100,
                 left: (windowCoordinates.width / 2) - (toastDimensions.width / 2)
             };
         },
@@ -370,6 +405,9 @@
             }
             if ( key === "duration" ) {
                 value = this._parseDurationOption(value);
+            }
+            if ( key === "position" ) {
+                value = this._parsePositionOption(value);
             }
             this._super( key, value );
         },

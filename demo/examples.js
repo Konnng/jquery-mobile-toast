@@ -16,6 +16,27 @@ $( document ).on( "pageinit", "#demoPage", function( event ) {
         });
     });
 
+    $("#top").on("tap", function() {
+        $.mobile.toast({
+            message: "Live long and prosper!",
+            position: "top"
+        });
+    });
+
+    $("#center").on("tap", function() {
+        $.mobile.toast({
+            message: "Live long and prosper!",
+            position: "center"
+        });
+    });
+
+    $("#bottom").on("tap", function() {
+        $.mobile.toast({
+            message: "Live long and prosper!",
+            position: "bottom"
+        });
+    });
+
     $("#custom").on("tap", function() {
         $.mobile.toast({
             message: "Live long and prosper!",

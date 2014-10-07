@@ -65,7 +65,7 @@ $.mobile.toast.prototype.options.message = 'Live long and prosper';
 Type: `Number or String`  
 Default: `2000`
 
-Duration of message show to the user.
+Duration of message show to the user. Possible values: "short", "long" number in milliseconds.
 
 **Example:**
 
@@ -77,6 +77,25 @@ $.mobile.toast({
 
 // Change default value
 $.mobile.toast.prototype.options.duration = 2000;
+```
+
+### position
+
+Type: `Number or String`  
+Default: `80`
+
+Position of message. Possible values: "top", "center", "bottom" or number in percent.
+
+**Example:**
+
+```javascript
+$.mobile.toast({
+    message: 'Live long and prosper',
+    position: 80
+});
+
+// Change default value
+$.mobile.toast.prototype.options.position = 80;
 ```
 
 ### classOnOpen
