@@ -12,6 +12,9 @@ describe("jquery.mobile.toast", function() {
         it("option 'duration' should be 2000 by default", function() {
             expect($.mobile.toast.prototype.options.duration).toEqual(2000);
         });
+        it("option 'position' should be 80 by default", function() {
+            expect($.mobile.toast.prototype.options.position).toEqual(80);
+        });
         it("option 'classOnOpen' should be an empty string by default", function() {
             expect($.mobile.toast.prototype.options.classOnOpen).toEqual("");
         });
@@ -37,6 +40,10 @@ describe("jquery.mobile.toast", function() {
         it("option 'duration' should be 2000", function() {
             $.mobile.toast.prototype.options.duration = 2000;
             expect($.mobile.toast.prototype.options.duration).toEqual(2000);
+        });
+        it("option 'position' should be 80", function() {
+            $.mobile.toast.prototype.options.position = 80;
+            expect($.mobile.toast.prototype.options.position).toEqual(80);
         });
         it("option 'classOnOpen' should be 'open'", function() {
             $.mobile.toast.prototype.options.classOnOpen = "open";
