@@ -11,6 +11,9 @@
   <script type="text/javascript" src="lib/jasmine-2.0.2/jasmine-html.js"></script>
   <script type="text/javascript" src="lib/jasmine-2.0.2/boot.js"></script>
 
+  <script type="text/javascript" src="lib/blanket-1.1.5/blanket.js"
+    data-cover-adapter="lib/blanket-1.1.5/jasmine-blanket.js"></script>
+
   <!-- include source files here... -->
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script>
@@ -19,7 +22,7 @@
   });
   </script>
   <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-  <script type="text/javascript" src="../src/jquery.mobile.toast.js"></script>
+  <script type="text/javascript" src="../src/jquery.mobile.toast.js" data-cover></script>
 
   <!-- include spec files here... -->
   <script type="text/javascript" src="spec/jquery.mobile.toast_spec.js"></script>
