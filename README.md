@@ -29,6 +29,10 @@ $.mobile.toast({
 </script>
 ```
 
+## What is a toast?
+
+> A toast provides simple feedback about an operation in a small popup. It only fills the amount of space required for the message and the current activity remains visible and interactive. - [Android Developer](http://developer.android.com/guide/topics/ui/notifiers/toasts.html)
+
 ## Requirements
 
 * [jQuery](http://jquery.com/)
@@ -208,7 +212,19 @@ Javascript:
 $.mobile.toast({
     message: 'Live long and prosper!',
     afterclose: function( event, ui ){
-        alert('Toast closed!');
+        alert('Toast after closed!');
+    },
+    afteropen: function( event, ui ){
+        alert('Toast after opened!');
+    },
+    beforeclose: function( event, ui ){
+        alert('Toast before closed!');
+    },
+    beforeposition: function( event, ui ){
+        alert('Toast before positioned!');
+    },
+    create: function( event, ui ){
+        alert('Toast created!');
     }
 });
 ```

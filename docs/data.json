@@ -100,7 +100,7 @@
             "type": "Number or String",
             "default": "80",
             "example": [
-                "\n    $.mobile.toast({\n        position: 'top'\n    });",
+                "\n    $.mobile.toast({\n        message: 'Live long and prosper',\n        position: 'top'\n    });",
                 "\n    // Change default value\n    $.mobile.toast.prototype.options.postion = 'top';"
             ],
             "class": "$.mobile.toast",
@@ -108,7 +108,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 77,
+            "line": 78,
             "description": "Optional class to overwrite styling of toast on open.",
             "itemtype": "attribute",
             "name": "classOnOpen",
@@ -123,7 +123,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 93,
+            "line": 94,
             "description": "Optional class to overwrite styling of toast on close.",
             "itemtype": "attribute",
             "name": "classOnClose",
@@ -138,7 +138,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 109,
+            "line": 110,
             "description": "Before position callback",
             "itemtype": "event",
             "name": "beforeposition",
@@ -153,7 +153,22 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 127,
+            "line": 128,
+            "description": "Before close callback",
+            "itemtype": "event",
+            "name": "beforeclose",
+            "type": "Function",
+            "default": "null",
+            "example": [
+                "\n    $.mobile.toast({\n        message: 'Live long and prosper!',\n        beforeclose: function( event, ui ){\n            console.log('beforeclose');\n        }\n    });",
+                "\n    $.mobile.toast.on('toastbeforeclose', function( event, ui ){});"
+            ],
+            "class": "$.mobile.toast",
+            "namespace": "$.mobile"
+        },
+        {
+            "file": "src/jquery.mobile.toast.js",
+            "line": 146,
             "description": "After close callback",
             "itemtype": "event",
             "name": "afterclose",
@@ -168,7 +183,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 145,
+            "line": 164,
             "description": "After open callback",
             "itemtype": "event",
             "name": "afteropen",
@@ -183,7 +198,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 164,
+            "line": 183,
             "description": "Constructor method, called automaticly",
             "is_constructor": 1,
             "itemtype": "method",
@@ -195,7 +210,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 171,
+            "line": 190,
             "description": "Create callback",
             "itemtype": "event",
             "name": "create",
@@ -208,7 +223,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 206,
+            "line": 225,
             "description": "Call parse functions for options",
             "itemtype": "method",
             "name": "_parseOptions",
@@ -219,7 +234,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 217,
+            "line": 236,
             "description": "Parse function for \"duration\" option",
             "itemtype": "method",
             "name": "_parseDurationOption",
@@ -234,7 +249,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 261,
+            "line": 280,
             "description": "Render text method, render and style message in paragraph",
             "itemtype": "method",
             "name": "_renderText",
@@ -249,7 +264,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 283,
+            "line": 302,
             "description": "Render toast method, render and style paragraph in container",
             "itemtype": "method",
             "name": "_renderToast",
@@ -264,7 +279,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 308,
+            "line": 327,
             "description": "Add toast to page",
             "itemtype": "method",
             "name": "_addToPage",
@@ -275,7 +290,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 318,
+            "line": 337,
             "description": "Calculates top, left coordinates to postion toast",
             "itemtype": "method",
             "name": "_getToastCoordinates",
@@ -290,7 +305,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 338,
+            "line": 357,
             "description": "Get position an size of page",
             "itemtype": "method",
             "name": "_getWindowCoordinates",
@@ -305,7 +320,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 354,
+            "line": 373,
             "description": "Remove toast from page",
             "itemtype": "method",
             "name": "_destroy",
@@ -316,7 +331,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 374,
+            "line": 393,
             "description": "Called whenever the option() method is called, regardless of the form in which the\noption() method was called.\nOverriding this is useful if you can defer processor-intensive changes for multiple\noption changes.",
             "itemtype": "method",
             "name": "_setOptions",
@@ -327,7 +342,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 387,
+            "line": 406,
             "description": "Called from the _setOptions() method for each individual option. Widget state should be\nupdated based on changes.",
             "itemtype": "method",
             "name": "_setOption",
@@ -350,7 +365,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 414,
+            "line": 433,
             "description": "Called before end and handle close animation. Trigger \"beforeClose\" event.",
             "itemtype": "method",
             "name": "_beforeEnd",
@@ -361,7 +376,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 436,
+            "line": 455,
             "description": "Destroy toast and trigger \"afterclose\" event.",
             "itemtype": "method",
             "name": "_end",
@@ -372,7 +387,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 451,
+            "line": 470,
             "description": "Reposition method, position toast during initialisation and later.",
             "itemtype": "method",
             "name": "reposition",
@@ -383,7 +398,7 @@
         },
         {
             "file": "src/jquery.mobile.toast.js",
-            "line": 468,
+            "line": 487,
             "description": "Open method, open toast and auto-close it after duration",
             "itemtype": "method",
             "name": "open",

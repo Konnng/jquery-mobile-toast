@@ -126,6 +126,24 @@
             beforeposition: null,
 
             /**
+             * Before close callback
+             *
+             * @attribute {function} beforeclose
+             * @event beforeclose
+             * @default null
+             * @example
+             *     $.mobile.toast({
+             *         message: 'Live long and prosper!',
+             *         beforeclose: function( event, ui ){
+             *             console.log('beforeclose');
+             *         }
+             *     });
+             * @example
+             *     $.mobile.toast.on('toastbeforeclose', function( event, ui ){});
+             */
+            beforeclose: null,
+
+            /**
              * After close callback
              *
              * @attribute {function} afterclose
