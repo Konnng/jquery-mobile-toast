@@ -1,15 +1,27 @@
 /*
- * jquery-mobile-toast - v0.0.7
+ * jquery-mobile-toast - v0.0.8
  * A jQuery Mobile Android-like Toast Plugin.
  * https://github.com/TobiasHennig/jquery-mobile-toast
  *
- * Copyright (c) 2014 Tobias Hennig
+ * Copyright (c) 2017 Tobias Hennig
  * Licensed under the MIT license.
  */
 
-;(function( $, window, document, undefined ) {
+/*
+ * jquery-mobile-toast - v0.0.8
+ * A jQuery Mobile Android-like Toast Plugin.
+ * https://github.com/TobiasHennig/jquery-mobile-toast
+ *
+ * Copyright ( c ) 2014 Tobias Hennig
+ * Copyright ( c ) 2017 Konnng Digital Agency
+ * Licensed under the MIT license.
+ */
+
+;(  function(  $, window, document, undefined ) {
 
     "use strict";
+
+    var $body = $(  "body" );
 
     /**
      * A jQuery Mobile Android-like Toast Plugin.
@@ -20,16 +32,16 @@
      * @extends widget
      * @chainable
      * @example
-     *     $.mobile.toast({ message: 'Live long and prosper!' });
+     *     $.mobile.toast( { message: 'Live long and prosper!' } );
      */
-    $.widget( "mobile.toast", {
+    $.widget(  "mobile.toast", {
 
         /**
          * Version of the widget
          *
          * @property {String} version
          */
-        version: "0.0.7",
+        version: "0.0.8",
 
         /**
          * Options of this widget
@@ -43,7 +55,7 @@
              * @attribute {String} message
              * @default ""
              * @example
-             *     $.mobile.toast({ message: 'Live long and prosper' });
+             *     $.mobile.toast( { message: 'Live long and prosper' } );
              * @example
              *     // Change default value
              *     $.mobile.toast.prototype.options.message = 'Live long and prosper';
@@ -57,10 +69,10 @@
              * @attribute {Number or String} duration
              * @default 2000
              * @example
-             *     $.mobile.toast({
+             *     $.mobile.toast( {
              *         message: 'Live long and prosper',
              *         duration: 2000
-             *     });
+             *     } );
              * @example
              *     // Change default value
              *     $.mobile.toast.prototype.options.duration = 2000;
@@ -74,10 +86,10 @@
              * @attribute {Number or String} position
              * @default 80
              * @example
-             *     $.mobile.toast({
+             *     $.mobile.toast( {
              *         message: 'Live long and prosper',
              *         position: 'top'
-             *     });
+             *     } );
              * @example
              *     // Change default value
              *     $.mobile.toast.prototype.options.postion = 'top';
@@ -90,10 +102,10 @@
              * @attribute {String} classOnOpen
              * @default ""
              * @example
-             *     $.mobile.toast({
+             *     $.mobile.toast( {
              *         message: 'Live long and prosper',
              *         classOnOpen: 'pomegranate'
-             *     });
+             *     } );
              * @example
              *     // Change default value
              *     $.mobile.toast.prototype.options.classOnOpen = 'pomegranate';
@@ -106,10 +118,10 @@
              * @attribute {String} classOnClose
              * @default ""
              * @example
-             *     $.mobile.toast({
+             *     $.mobile.toast( {
              *         message: 'Live long and prosper',
              *         classOnClose: 'pomegranate'
-             *     });
+             *     } );
              * @example
              *     // Change default value
              *     $.mobile.toast.prototype.options.classOnClose = 'pomegranate';
@@ -123,14 +135,14 @@
              * @event beforeposition
              * @default null
              * @example
-             *     $.mobile.toast({
+             *     $.mobile.toast( {
              *         message: 'Live long and prosper!',
-             *         beforeposition: function( event, ui ){
-             *             console.log('beforeposition');
+             *         beforeposition: function(  event, ui ){
+             *             console.log( 'beforeposition' );
              *         }
-             *     });
+             *     } );
              * @example
-             *     $.mobile.toast.on('toastbeforeposition', function( event, ui ){});
+             *     $.mobile.toast.on( 'toastbeforeposition', function(  event, ui ){} );
              */
             beforeposition: null,
 
@@ -141,14 +153,14 @@
              * @event beforeclose
              * @default null
              * @example
-             *     $.mobile.toast({
+             *     $.mobile.toast( {
              *         message: 'Live long and prosper!',
-             *         beforeclose: function( event, ui ){
-             *             console.log('beforeclose');
+             *         beforeclose: function(  event, ui ){
+             *             console.log( 'beforeclose' );
              *         }
-             *     });
+             *     } );
              * @example
-             *     $.mobile.toast.on('toastbeforeclose', function( event, ui ){});
+             *     $.mobile.toast.on( 'toastbeforeclose', function(  event, ui ){} );
              */
             beforeclose: null,
 
@@ -159,14 +171,14 @@
              * @event afterclose
              * @default null
              * @example
-             *     $.mobile.toast({
+             *     $.mobile.toast( {
              *         message: 'Live long and prosper!',
-             *         afterclose: function( event, ui ){
-             *             console.log('afterclose');
+             *         afterclose: function(  event, ui ){
+             *             console.log( 'afterclose' );
              *         }
-             *     });
+             *     } );
              * @example
-             *     $.mobile.toast.on('toastafterclose', function( event, ui ){});
+             *     $.mobile.toast.on( 'toastafterclose', function(  event, ui ){} );
              */
             afterclose: null,
 
@@ -177,14 +189,14 @@
              * @event afteropen
              * @default null
              * @example
-             *     $.mobile.toast({
+             *     $.mobile.toast( {
              *         message: 'Live long and prosper!',
-             *         afteropen: function( event, ui ){
-             *             console.log('afteropen');
+             *         afteropen: function(  event, ui ){
+             *             console.log( 'afteropen' );
              *         }
-             *     });
+             *     } );
              * @example
-             *     $.mobile.toast.on('toastafteropen', function( event, ui ){});
+             *     $.mobile.toast.on( 'toastafteropen', function(  event, ui ){} );
              */
             afteropen: null
         },
@@ -201,22 +213,21 @@
          *
          * @event create
          * @example
-         *     $.mobile.toast({
+         *     $.mobile.toast( {
          *         message: 'Live long and prosper!',
-         *         create: function( event, ui ){
-         *             console.log('create');
+         *         create: function(  event, ui ){
+         *             console.log( 'create' );
          *         }
-         *     });
+         *     } );
          * @example
-         *     $.mobile.toast.on('toastcreate', function( event, ui ){});
+         *     $.mobile.toast.on( 'toastcreate', function(  event, ui ){} );
          */
         _create: function() {
+
             // Parse initial options
             this._parseOptions();
 
-            // Cache page and content area
-            this.$p = $.mobile.activePage;
-            this.$c = $(".ui-content", this.$p);
+            this.$c = $body;
 
             // Render toast
             this.$toast = this._renderToast();
@@ -238,8 +249,8 @@
          * @private
          */
         _parseOptions: function() {
-            this.options.duration = this._parseDurationOption(this.options.duration);
-            this.options.position = this._parsePositionOption(this.options.position);
+            this.options.duration = this._parseDurationOption( this.options.duration );
+            this.options.position = this._parsePositionOption( this.options.position );
         },
 
         /**
@@ -249,9 +260,9 @@
          * @private
          * @return {number} Duration in ms
          */
-        _parseDurationOption: function(value) {
-            if (typeof value === "string") {
-                switch (value) {
+        _parseDurationOption: function( value ) {
+            if ( typeof value === "string" ) {
+                switch ( value ) {
                     case "short":
                         value = 2500;
                         break;
@@ -266,9 +277,9 @@
             return value;
         },
 
-        _parsePositionOption: function(value) {
-            if (typeof value === "string") {
-                switch (value) {
+        _parsePositionOption: function( value ) {
+            if ( typeof value === "string" ) {
+                switch ( value ) {
                     case "top":
                         value = 20;
                         break;
@@ -294,7 +305,7 @@
          * @return {object} jQuery fragment
          */
         _renderText: function() {
-            return $("<p>" + this.options.message + "</p>").css({
+            return $( "<p>" + this.options.message + "</p>" ).css( {
                 "max-width":  "160px",
 
                 "margin":     "0",
@@ -305,7 +316,7 @@
                 "text-shadow":"none",
 
                 "border":     "none"
-            });
+            } );
         },
 
         /**
@@ -316,9 +327,9 @@
          * @return {object} jQuery fragment
          */
         _renderToast: function() {
-            return $("<div data-role='toast'></div>")
-                .html(this._renderText())
-                .css({
+            return $( "<div data-role='toast'></div>" )
+                .html( this._renderText() )
+                .css( {
                     "display":               "none",
                     "position":              "fixed",
                     "z-index":               "1100",
@@ -329,8 +340,8 @@
                     "border-radius":         "6px",
 
                     "background-clip":       "padding-box"
-                })
-                .addClass(this.options.classOnOpen);
+                } )
+                .addClass( this.options.classOnOpen );
         },
 
         /**
@@ -340,7 +351,7 @@
          * @private
          */
         _addToPage: function() {
-            this.$c.append( this.$toast );
+            this.$c.append(  this.$toast );
         },
 
         /**
@@ -358,8 +369,8 @@
             windowCoordinates = this._getWindowCoordinates();
 
             return {
-                top: (windowCoordinates.height * this.options.position) / 100,
-                left: (windowCoordinates.width / 2) - (toastDimensions.width / 2)
+                top: ( windowCoordinates.height * this.options.position ) / 100,
+                left: ( windowCoordinates.width / 2 ) - ( toastDimensions.width / 2 )
             };
         },
 
@@ -374,8 +385,8 @@
             return {
                 x: $.mobile.window.scrollLeft(),
                 y: $.mobile.window.scrollTop(),
-                width: ( window.innerWidth || $.mobile.window.width() ),
-                height: ( window.innerHeight || $.mobile.window.height() )
+                width: (  window.innerWidth || $.mobile.window.width() ),
+                height: (  window.innerHeight || $.mobile.window.height() )
             };
         },
 
@@ -386,16 +397,16 @@
          * @private
          */
         _destroy: function() {
+
             // Remove toast
             this.$toast.remove();
 
             // Reset cached elements
-            this.$p = null;
             this.$c = null;
             this.$toast = null;
 
             // Clear timer
-            window.clearTimeout(this.timer);
+            window.clearTimeout( this.timer );
             this.timer = null;
         },
 
@@ -409,7 +420,7 @@
          * @private
          */
         _setOptions: function() {
-            this._superApply( arguments );
+            this._superApply(  arguments );
         },
 
         /**
@@ -421,22 +432,24 @@
          * @param {String} key The name of the option to set.
          * @param {Object} value A value to set for the option.
          */
-        _setOption: function( key, value ) {
-            if ( key === "message" ) {
+        _setOption: function(  key, value ) {
+            if (  key === "message" ) {
+
                 // Trim message
-                value = $.trim(value);
+                value = $.trim( value );
+
                 // Prevent empty message
-                if ( value === "" ) {
+                if (  value === "" ) {
                     return;
                 }
             }
-            if ( key === "duration" ) {
-                value = this._parseDurationOption(value);
+            if (  key === "duration" ) {
+                value = this._parseDurationOption( value );
             }
-            if ( key === "position" ) {
-                value = this._parsePositionOption(value);
+            if (  key === "position" ) {
+                value = this._parsePositionOption( value );
             }
-            this._super( key, value );
+            this._super(  key, value );
         },
 
         /**
@@ -446,18 +459,19 @@
          * @private
          */
         _beforeEnd: function() {
-            this._trigger("beforeClose");
+            this._trigger( "beforeClose" );
 
-            if (this.options.classOnClose !== "") {
+            if ( this.options.classOnClose !== "" ) {
                 this.$toast
-                    .addClass(this.options.classOnClose)
-                    .on("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd",
-                        $.proxy(function() {
+                    .addClass( this.options.classOnClose )
+                    .on( "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd",
+                        $.proxy( function() {
                             this._end();
-                        }, this));
+                        }, this ) );
             } else {
+
                 // Default
-                this.$toast.fadeOut(500, $.proxy(this._end, this));
+                this.$toast.fadeOut( 500, $.proxy( this._end, this ) );
             }
         },
 
@@ -469,7 +483,7 @@
          */
         _end: function() {
             this.destroy();
-            this._trigger("afterclose");
+            this._trigger( "afterclose" );
         },
 
         /*
@@ -483,14 +497,14 @@
          * @protected
          */
         reposition: function() {
-            this._trigger("beforeposition");
+            this._trigger( "beforeposition" );
 
             var coordinates = this._getToastCoordinates();
 
-            this.$toast.css({
+            this.$toast.css( {
                 "top":  coordinates.top,
                 "left": coordinates.left
-            });
+            } );
         },
 
         /**
@@ -500,10 +514,13 @@
          * @protected
          */
         open: function() {
-            this.$toast.css({ "display": "inline-block" });
-            this._trigger("afteropen");
-            this.timer = window.setTimeout($.proxy(this._beforeEnd, this), this.options.duration);
+            this.$toast.css( { "display": "inline-block" } );
+            this._trigger( "afteropen" );
+            this.timer = window.setTimeout(
+                $.proxy( this._beforeEnd, this ),
+                this.options.duration
+            );
         }
-    });
+    } );
 
-})( jQuery, window, document );
+} )(  jQuery, window, document );

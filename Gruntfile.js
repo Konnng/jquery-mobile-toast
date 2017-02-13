@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 
 		// Banner definitions
 		meta: {
-			banner: '/*\n' + 
+			banner: '/*\n' +
 			' * <%= pkg.title || pkg.name %> - v<%= pkg.version %>\n' +
 			' * <%= pkg.description %>\n' +
       		' * <%= pkg.homepage %>\n' +
@@ -30,7 +30,9 @@ module.exports = function(grunt) {
 
 		// Lint definitions
 		jshint: {
-			files: ["src/jquery.mobile.toast.js"],
+			files: [
+				"src/jquery.mobile.toast.js"
+			],
 			options: {
 				jshintrc: ".jshintrc"
 			}

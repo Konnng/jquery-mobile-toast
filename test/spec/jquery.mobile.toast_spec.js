@@ -16,7 +16,6 @@ describe("jquery.mobile.toast", function() {
         it("should be destroyed", function() {
             $toast = toast({ message: "Foo" });
             $toast.destroy();
-            expect($toast.$p).toBeNull();
             expect($toast.$c).toBeNull();
             expect($toast.$toast).toBeNull();
             expect($toast.timer).toBeNull();
@@ -25,7 +24,7 @@ describe("jquery.mobile.toast", function() {
 
     describe("property", function() {
         describe("version", function() {
-            var version = "0.0.7";
+            var version = "0.0.8";
             it("should be defined", function() {
                 expect($.mobile.toast.version).toBeDefined();
             });
@@ -59,6 +58,9 @@ describe("jquery.mobile.toast", function() {
             var cb;
 
             beforeEach(function() {
+                jasmine.clock().install();
+                jasmine.clock().mockDate()
+
                 $.mobile.toast.prototype.options.message =        defaults.message;
                 $.mobile.toast.prototype.options.duration =       defaults.duration;
                 $.mobile.toast.prototype.options.position =       defaults.position;
@@ -70,11 +72,11 @@ describe("jquery.mobile.toast", function() {
 
                 toast = $.mobile.toast;
                 cb = jasmine.createSpy("cb");
-                jasmine.clock().install();
             });
 
             afterEach(function() {
                 $toast = null;
+                cb = null;
                 jasmine.clock().uninstall();
             });
 
@@ -198,6 +200,7 @@ describe("jquery.mobile.toast", function() {
                     $toast = toast({ message: "foo", beforeClose: cb });
                     expect(cb).not.toHaveBeenCalled();
                     jasmine.clock().tick(2001);
+                    jasmine.clock().tick(1000);
                     expect(cb).toHaveBeenCalled();
                 });
             });
@@ -207,6 +210,7 @@ describe("jquery.mobile.toast", function() {
                     $toast = toast({ message: "foo", afterclose: cb });
                     expect(cb).not.toHaveBeenCalled();
                     jasmine.clock().tick(2001);
+                    jasmine.clock().tick(1000);
                     expect(cb).toHaveBeenCalled();
                 });
             });

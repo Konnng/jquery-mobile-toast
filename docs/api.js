@@ -4,6 +4,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "$.mobile.toast"
     ],
     "modules": [],
-    "allModules": []
+    "allModules": [],
+    "elements": []
 } };
 });
